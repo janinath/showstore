@@ -1,0 +1,27 @@
+.home-container {
+    height: 100vh;
+    background-image: url('{% static "images/logo.png" %}'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    background-color: rgba(74, 69, 69, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.btn-warning {
+    color: aliceblue;
+    text-shadow: 2px 2px 1px rgb(108, 83, 11);
+    font-size: 1.5em;
+}
+.hover-dropdowns:hover{
+    background-color:rgb(100, 86, 38) ;
+    color: black;
+}

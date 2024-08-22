@@ -1,1 +1,9 @@
-<h1>hello im navbar</h1>
+{% load static %}
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/logo.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        <span class="text-warning p-3 h1">movieStore</span>
+      </a>
+    </div>
+  </nav>

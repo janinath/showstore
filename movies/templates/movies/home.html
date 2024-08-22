@@ -1,8 +1,61 @@
-{% extends 'movies/base.html' %}
 
+{% extends 'movies/base.html' %}
+{% load static %}
 {% block title %}Home - Movie Store{% endblock %}
+<style>
+    .home-container{
+        background-image: url('{% static "images/logo.png" %}'); height: 100vh;
+    }
+</style>
 
 {% block content %}
-    <h1>Welcome to the Movie Store</h1>
-    <p>Explore our collection of movies, genres, actors, and directors.</p>
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-warning" href="#">movies</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-warning" aria-current="page" href="#">actors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" href="#">directors</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                geners
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Action</a></li>
+              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Horror</a></li>
+              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Science fiction</a></li>
+              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Romance</a></li>
+              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Animation</a></li>
+
+
+            </ul>
+          </li>
+         
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+<div class="container-fluid" style="background-color: rgb(25, 15, 3);">
+
+
+
+<div class="home-container d-flex justify-content-center align-items-center text-center" >
+    <div class="overlay">
+        <h1 class="display-4 text-white mb-4">"Experience Movies Like Never Before"</h1>
+        <a href="" class="btn btn-lg btn-warning px-5 py-3">Login</a>
+    </div>
+</div>
+</div>
 {% endblock %}
+
