@@ -102,6 +102,8 @@ def register(request):
 def logout_view(request):
     # This will log the user out
     logout(request)
-    
+    messages.info(request, "You have been logged out.")
     # Redirect to home page after logout
     return redirect(reverse('movies:home'))
+
+ 
