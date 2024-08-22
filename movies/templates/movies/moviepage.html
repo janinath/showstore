@@ -2,10 +2,101 @@
 {% extends 'movies/base.html' %}
 {% load static %}
 {% block title %}Home - Movie Store{% endblock %}
+<style>
+    .container {
+    background-color: #141414;
+    padding: 20px;
+    border-radius: 8px;
+}
 
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+h2, h4, h5 {
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+.mb-4, .my-4, .mb-5, .my-5 {
+    margin-bottom: 1.5rem !important;
+    margin-top: 1.5rem !important;
+}
+
+</style>
 
 {% block content %}
 
+<div class="container text-white my-5">
+    <!-- Movie Poster and Basic Info -->
+    <div class="row mb-4">
+        <div class="col-md-4 text-center">
+            <img src="{{ one_movie.poster_image.url }}" alt="{{ movie.title }}" class="img-fluid mb-3">
+        </div>
+        <div class="col-md-8">
+            <h2 class="text-warning">{{ one_movie.title }}</h2>
+            <p>Release Date: {{ one_movie.release_date }}</p>
+        </div>
+    </div>
+
+    <!-- Movie Description -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <p>{{ one_movie.description }}</p>
+        </div>
+    </div>
+
+    <!-- Duration and Genre -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <p><strong>Duration:</strong> {{ one_movie.duration }} minutes</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Genre:</strong> {{ one_movie.genre }}</p>
+        </div>
+    </div>
+
+    <!-- Director Section -->
+    <div class="row mb-5">
+        <div class="col-md-4 text-center">
+            <img src="{{ one_movie.director.image.url }}" alt="{{ movie.director.name }}" class="img-fluid rounded-circle mb-3">
+        </div>
+        <div class="col-md-8">
+            <h4 class="text-warning">{{ one_movie.director.name }}</h4>
+            <p>{{ one_movie.director.bio }}</p>
+        </div>
+    </div>
+
+    <!-- Actors Section -->
+    <div class="row">
+        {% for actor in one_movie.actors.all %}
+        <div class="col-md-4 text-center mb-4">
+            <img src="{{ actor.image.url }}" alt="{{ actor.name }}" class="img-fluid rounded-circle mb-3">
+        </div>
+        <div class="col-md-8 mb-4">
+            <h5 class="text-warning">{{ actor.name }}</h5>
+            <p>{{ actor.bio }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 
 

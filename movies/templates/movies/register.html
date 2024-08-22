@@ -1,0 +1,68 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4">Create Account</h3>
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <!-- Username Field -->
+                        <div class="form-group mb-3">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control" id="username" value="{{ form.username.value|default_if_none:'' }}">
+                            {% if form.username.errors %}
+                                <div class="text-danger">
+                                    {{ form.username.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Email Field -->
+                        <div class="form-group mb-3">
+                            <label for="email">Email Address</label>
+                            <input type="email" name="email" class="form-control" id="email" value="{{ form.email.value|default_if_none:'' }}">
+                            {% if form.email.errors %}
+                                <div class="text-danger">
+                                    {{ form.email.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Password1 Field -->
+                        <div class="form-group mb-3">
+                            <label for="password1">Password</label>
+                            <input type="password" name="password1" class="form-control" id="password1">
+                            {% if form.password1.errors %}
+                                <div class="text-danger">
+                                    {{ form.password1.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Password2 Field -->
+                        <div class="form-group mb-3">
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" name="password2" class="form-control" id="password2">
+                            {% if form.password2.errors %}
+                                <div class="text-danger">
+                                    {{ form.password2.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

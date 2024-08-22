@@ -68,10 +68,7 @@
           </li>
          
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-warning" type="submit">Search</button>
-        </form>
+       
       </div>
     </div>
   </nav>
@@ -82,7 +79,7 @@
 <div class="home-container d-flex justify-content-center align-items-center text-center" >
     <div class="overlay">
         <h1 class="display-4 text-white mb-4">"Experience Movies Like Never Before"</h1>
-        <a href="" class="btn btn-lg btn-warning px-5 py-3">Login</a>
+        <a href="{% url 'movies:login' %}" class="btn btn-lg btn-warning px-5 py-3">Login</a>
     </div>
 </div>
 </div>

@@ -1,9 +1,30 @@
 {% load static %}
 <nav class="navbar bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'movies:home' %}">
-        <img src="{% static 'images/logo.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        <span class="text-warning p-3 h1">movieStore</span>
-      </a>
+        <a class="navbar-brand" href="{% url 'movies:home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <span class="text-warning p-3 h1">movieStore</span>
+        </a>
+
+        <!-- User profile section -->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if user.is_authenticated %}
+                    <span class="rounded-circle bg-light text-dark d-inline-flex justify-content-center align-items-center" style="width: 40px; height: 40px; font-size: 20px;">
+                        {{ user.username|slice:":1"|upper }}
+                    </span>
+                {% else %}
+                    <img src="{% static 'images/avathar.png' %}" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
+                {% endif %}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" href="{% url 'movies:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a class="dropdown-item" href="{% url 'movies:login' %}">Login</a></li>
+                    <li><a class="dropdown-item" href="{% url 'movies:register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
