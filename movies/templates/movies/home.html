@@ -3,36 +3,65 @@
 {% load static %}
 {% block title %}Home - Movie Store{% endblock %}
 <style>
-    .home-container{
-        background-image: url('{% static "images/logo.png" %}'); height: 100vh;
+   
+   .item {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #1a1a1a; /* Dark background for the cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Initial box shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.item:hover {
+    box-shadow: 0 8px 16px rgba(255, 255, 0, 0.5); /* Brighter shadow on hover */
+    transform: translateY(-10px); /* Move the card forward (upwards) */
+}
+    .item h2 {
+        color: #ffc107;
+    }
+    .item p {
+        font-size: 1.1em;
+    }
+    .navbar-nav .nav-link, .dropdown-item {
+        color: #ffc107 !important;
+    }
+    .hover-dropdowns:hover {
+        background-color: #333 !important;
+    }
+    .item:hover{
+        box-shadow: 2px 2px 2px yellow;
     }
 </style>
 
 {% block content %}
 <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand text-warning" href="#">movies</a>
+      <a class="navbar-brand text-warning" href="{% url 'movies:movie' %}">movies</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active text-warning" aria-current="page" href="#">actors</a>
+            <a class="nav-link active text-warning" aria-current="page" href="{% url 'movies:actor' %}">actors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-warning" href="#">directors</a>
+            <a class="nav-link text-warning" href="{% url 'movies:director' %}">directors</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 geners
             </a>
             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Action</a></li>
-              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Horror</a></li>
+              {% for i in all_gen %}
+              <li><a class="dropdown-item text-warning hover-dropdowns" href="{% url 'movies:gener_view' i.id %}">{{i.name}}</a></li>
+              {% endfor %}
+              <!-- <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Horror</a></li>
               <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Science fiction</a></li>
               <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Romance</a></li>
-              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Animation</a></li>
+              <li><a class="dropdown-item text-warning hover-dropdowns" href="#">Animation</a></li> -->
 
 
             </ul>
@@ -54,6 +83,32 @@
     <div class="overlay">
         <h1 class="display-4 text-white mb-4">"Experience Movies Like Never Before"</h1>
         <a href="" class="btn btn-lg btn-warning px-5 py-3">Login</a>
+    </div>
+</div>
+</div>
+<!-- sections -->
+<div class="feature-section text-center">
+    <div class="row">
+        <div class="col-md-3 item" >
+           <a href="{% url 'movies:actor' %}"> <img src="{% static 'images/actors.jpeg' %}" alt="TV Icon" class="img-fluid mb-3"> </a>
+            <h2 class="text-white">Discover Star Power</h2>
+            <p class="text-white">Explore our library of iconic Actors</p>
+        </div>
+        <div class="col-md-3 item">
+          <a href="{% url 'movies:director' %}"> <img src="{% static 'images/directors.jpeg' %}" alt="Download Icon" class="img-fluid mb-3"> </a>
+            <h2 class="text-white">Meet the Visionaries</h2>
+            <p class="text-white">Dive into the world of renowned Directors</p>
+        </div>
+        <div class="col-md-3 item">
+          <a href="{% url 'movies:genre' %}" ><img src="{% static 'images/geners.jpeg' %}" alt="Watch Everywhere Icon" class="img-fluid mb-3"> </a>
+            <h2 class="text-white">Choose Your Fav</h2>
+            <p class="text-white">Find your favorite Genres and immerse yourself.</p>
+        </div>
+        <div class="col-md-3 item">
+          <a href="{% url 'movies:movie' %}" > <img src="{% static 'images/movie.jpeg' %}" alt="Kids Profile Icon" class="img-fluid mb-3"> </a>
+            <h2 class="text-white">Endless Entertainment</h2>
+            <p class="text-white">Browse our extensive collection of Movies.</p>
+        </div>
     </div>
 </div>
 </div>

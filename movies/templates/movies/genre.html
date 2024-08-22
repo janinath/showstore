@@ -1,0 +1,30 @@
+
+{% extends 'movies/base.html' %}
+{% load static %}
+{% block title %}Home - Movie Store{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container my-5">
+    <h1 class="text-center text-warning mb-4">""Explore Worlds Beyond Imagination"</h1>
+    <p class="text-center text-white mb-5">Delve into a variety of genres and find the perfect story that speaks to you</p>
+
+    <div class="row">
+     {% for i in geners %}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-warning">{{i.name}}</h5>
+                    <p class="card-text">{{i.description}}</p>
+                    <a href="#" class="btn btn-warning">View movies</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+
+{% endblock %}

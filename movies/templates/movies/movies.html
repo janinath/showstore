@@ -1,0 +1,63 @@
+
+{% extends 'movies/base.html' %}
+{% load static %}
+{% block title %}Home - Movie Store{% endblock %}
+
+
+{% block content %}
+{% if one_person %}
+<div class="container text-white my-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <!-- Actor Image -->
+            <img src="{{ one_actor.image.url }}" alt="{{ one_actor.name }}" class="img-fluid rounded-circle mb-3" style="width: 100%; max-width: 300px;">
+        </div>
+        <div class="col-md-8">
+            <!-- Actor Name -->
+            <h2 class="text-warning">{{ one_person.name }}</h2>
+            <!-- Actor Bio -->
+            <p>{{ one_person.bio }}</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% if one_dir %}
+<div class="container text-white my-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <!-- Actor Image -->
+            <img src="{{ one_dir.image.url }}" alt="{{ one_dir.name }}" class="img-fluid rounded-circle mb-3" style="width: 100%; max-width: 300px;">
+        </div>
+        <div class="col-md-8">
+            <!-- Actor Name -->
+            <h2 class="text-warning">{{ one_dir.name }}</h2>
+            <!-- Actor Bio -->
+            <p>{{ one_dir.bio }}</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="container my-5">
+    <h1 class="text-center text-warning mb-4">"Experience the Magic of Cinema"</h1>
+    <p class="text-center text-white mb-5">Browse our extensive collection of movies and find your next favorite film</p>
+
+    <div class="row">
+     {% for i in mov %}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white h-100">
+                <img src="{{i.poster_image.url}}" class="card-img-top" alt="Actor 1" height="300px" width="200px">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-warning">{{i.title}}</h5>
+                    <a href="{% url 'movies:movie_desc' i.id %}" class="btn btn-warning">View Description</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+     
+
+
+
+
+
+{% endblock %}

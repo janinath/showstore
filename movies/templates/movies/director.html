@@ -1,0 +1,36 @@
+
+{% extends 'movies/base.html' %}
+{% load static %}
+{% block title %}Home - Movie Store{% endblock %}
+
+
+{% block content %}
+
+<div class="container my-5">
+    <h1 class="text-center text-warning mb-4">"Meet the Visionaries Behind the Camera"</h1>
+    <p class="text-center text-white mb-5">Discover the creative minds who bring cinematic masterpieces to life</p>
+
+    <div class="row">
+     {% for i in directors %}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white h-100">
+                <img src="{{i.image.url}}" class="card-img-top" alt="Actor 1" height="300px" width="200px">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-warning">{{i.name}}</h5>
+                    <a href="{% url 'movies:director_data' i.id %}" class="btn btn-warning">View</a>
+                </div>
+            </div>
+        </div>
+     
+       {% endfor %}
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
